@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio Digital - Feira de Profissões: Engenharia de Software. Projeto interdisciplinar de Victor Gabriel - 2º Ano C Nº 23.">
+  <title>Engenharia de Software | Feira de Profissões</title>
+  <style>
+    :root {
+      --bg-primary: #0b1120;
+      --bg-secondary: #111827;
+      --bg-card: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent: #06b6d4;
+      --accent-hover: #0891b2;
+      --accent-secondary: #6366f1;
+      --border: #334155;
+      --success: #10b981;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+      --transition: all 0.3s ease;
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f1f5f9;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --accent-secondary: #4f46e5;
+      --border: #cbd5e1;
+      --success: #059669;
+      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: var(--transition);
+    }
+
+    /* HEADER & NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo span {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 0.5rem;
+      transition: var(--transition);
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+      background-color: rgba(6, 182, 212, 0.12);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-icon, .menu-toggle {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.85rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .btn-icon:hover, .menu-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    /* LAYOUT & SECTIONS */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
+    }
+
+    section {
+      scroll-margin-top: 5.5rem;
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(6, 182, 212, 0.15);
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 750px;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 0.6rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    .btn-outline {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border-color: var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* HERO / HOME */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .slogan {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+
+    .hero-media {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .hero-media img {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      border-radius: 0.75rem;
+    }
+
+    /* CARDS & TABS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    article.card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    article.card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tab-btn {
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .tab-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--accent);
+      padding: 0.3rem 0.75rem;
+      border-radius: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* TIMELINE (HISTÓRIA) */
+    .history-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .timeline-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .timeline-btn {
+      text-align: left;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 1rem 1.25rem;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .timeline-btn.active,
+    .timeline-btn:hover {
+      border-color: var(--accent);
+      background: rgba(6, 182, 212, 0.12);
+    }
+
+    .timeline-year {
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .history-display {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .history-display img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: contain;
+      margin-bottom: 1.25rem;
+      border-radius: 0.6rem;
+      background: rgba(15, 23, 42, 0.4);
+      padding: 0.75rem;
+    }
+
+    /* MERCADO & GRÁFICOS */
+    .market-dashboard {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    .stat-highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .stat-box {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-top: 0.25rem;
+    }
+
+    .chart-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .bar-item label {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .bar-track {
+      width: 100%;
+      height: 14px;
+      background: var(--bg-primary);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+      border-radius: 999px;
+      transition: width 0.5s ease;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.5rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    /* MODAL */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 2000;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      max-width: 540px;
+      width: 100%;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .quiz-option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin-top: 0.75rem;
+      padding: 0.85rem 1rem;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+      border-radius: 0.6rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .quiz-option:hover {
+      border-color: var(--accent);
+      background: rgba(6, 182, 212, 0.12);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 850px) {
+      .hero-grid,
+      .history-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 1.5rem;
+      }
+
+      nav.open {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO E NAVEGAÇÃO -->
+  <header>
+    <div class="nav-container">
+      <a href="#home" class="logo">&lt;/&gt; <span>Engenharia de Software</span></a>
+
+      <nav id="mainNav" aria-label="Menu Principal">
+        <ul>
+          <li><a href="#home" class="nav-link active">Apresentação</a></li>
+          <li><a href="#rotina" class="nav-link">Rotina &amp; Áreas</a></li>
+          <li><a href="#historia" class="nav-link">Fatos Históricos</a></li>
+          <li><a href="#mercado" class="nav-link">Panorama &amp; Mercado</a></li>
+          <li><a href="#creditos" class="nav-link">Créditos</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-icon" id="themeBtn" aria-label="Alternar tema claro ou escuro">☀️ Tema</button>
+        <button type="button" class="menu-toggle" id="menuBtn" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+
+    <!-- 1. APRESENTAÇÃO DA PROFISSÃO (HOME) -->
+    <section id="home">
+      <div class="hero-grid">
+        <div>
+          <span class="badge">Feira de Profissões • Portfólio Digital</span>
+          <h1>Engenharia de Software</h1>
+          <p class="slogan">"Arquitetando o código que transforma ideias em soluções reais para o mundo digital."</p>
+          <p class="subtitle">
+            A Engenharia de Software aplica princípios científicos, matemáticos e de gestão para projetar, desenvolver, testar e manter sistemas computacionais seguros, escaláveis e confiáveis.
+          </p>
+          <div class="hero-buttons">
+            <a href="#mercado" class="btn btn-primary">📊 Ver Dados do Mercado</a>
+            <button type="button" class="btn btn-outline" id="openQuizBtn">🎯 Teste Vocacional Rápido</button>
+          </div>
+        </div>
+
+        <figure class="hero-media">
+          <img
+            src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 280'%3E%3Crect width='400' height='280' rx='16' fill='%230f172a'/%3E%3Crect x='24' y='24' width='352' height='36' rx='8' fill='%231e293b'/%3E%3Ccircle cx='46' cy='42' r='6' fill='%23ef4444'/%3E%3Ccircle cx='66' cy='42' r='6' fill='%23f59e0b'/%3E%3Ccircle cx='86' cy='42' r='6' fill='%2310b981'/%3E%3Crect x='24' y='76' width='165' height='180' rx='10' fill='%231e293b'/%3E%3Crect x='40' y='96' width='90' height='12' rx='6' fill='%2306b6d4'/%3E%3Crect x='40' y='120' width='130' height='10' rx='5' fill='%2364748b'/%3E%3Crect x='40' y='140' width='110' height='10' rx='5' fill='%236366f1'/%3E%3Crect x='40' y='160' width='125' height='10' rx='5' fill='%2364748b'/%3E%3Crect x='40' y='190' width='80' height='28' rx='6' fill='%2306b6d4'/%3E%3Crect x='205' y='76' width='171' height='84' rx='10' fill='%231e293b'/%3E%3Cpath d='M225 135 L255 110 L285 122 L320 92 L355 104' stroke='%2310b981' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Crect x='205' y='172' width='171' height='84' rx='10' fill='%231e293b'/%3E%3Ccircle cx='250' cy='214' r='22' stroke='%2306b6d4' stroke-width='6' fill='none'/%3E%3Crect x='288' y='200' width='68' height='10' rx='5' fill='%2394a3b8'/%3E%3Crect x='288' y='218' width='48' height='10' rx='5' fill='%236366f1'/%3E%3C/svg%3E"
+            alt="Ilustração representando interface de desenvolvimento de software, gráficos de desempenho e arquitetura de sistemas"
+            loading="lazy">
+        </figure>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <h3>⚙️ Rotina Profissional</h3>
+          <p>Participação em reuniões ágeis (Daily Scrum), levantamento de requisitos com clientes, escrita e revisão de código (Code Review), testes automatizados e monitoramento de sistemas em nuvem.</p>
+        </article>
+        <article class="card">
+          <h3>📐 Principais Atribuições</h3>
+          <p>Definir a arquitetura de aplicações, modelar bancos de dados, garantir segurança da informação, otimizar desempenho e liderar o ciclo completo de vida do software.</p>
+        </article>
+        <article class="card">
+          <h3>🌍 Importância para a Sociedade</h3>
+          <p>Sustenta serviços essenciais da vida moderna: aplicativos bancários (PIX), prontuários médicos digitais, plataformas educacionais, transporte urbano, energia e comunicação global.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ESPECIALIDADES INTERATIVAS -->
+    <section id="rotina">
+      <div class="section-header">
+        <span class="badge">Atuação Prática</span>
+        <h2>Especialidades da Engenharia de Software</h2>
+        <p class="subtitle">Clique nos botões abaixo para explorar o que cada especialista faz no dia a dia.</p>
+      </div>
+
+      <div class="tab-bar" role="tablist">
+        <button type="button" class="tab-btn active" data-role="frontend">Front-End &amp; UX</button>
+        <button type="button" class="tab-btn" data-role="backend">Back-End &amp; APIs</button>
+        <button type="button" class="tab-btn" data-role="devops">DevOps &amp; Cloud</button>
+        <button type="button" class="tab-btn" data-role="ia">Engenharia de IA &amp; Dados</button>
+      </div>
+
+      <article class="tab-panel" id="rolePanel">
+        <h3 id="roleTitle">Engenharia Front-End &amp; Experiência do Usuário</h3>
+        <p id="roleDesc">Responsável por construir toda a interface visual e interativa com a qual o usuário interage diretamente no navegador ou celular, garantindo acessibilidade, velocidade e responsividade.</p>
+        <div class="pill-list" id="roleTags">
+          <span class="pill">HTML5 &amp; CSS3</span>
+          <span class="pill">JavaScript / TypeScript</span>
+          <span class="pill">React &amp; Next.js</span>
+          <span class="pill">Acessibilidade Web</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- 2. FATOS HISTÓRICOS (INTEGRAÇÃO COM HISTÓRIA) -->
+    <section id="historia">
+      <div class="section-header">
+        <span class="badge">Integração com História</span>
+        <h2>Fatos Históricos e Evolução da Área</h2>
+        <p class="subtitle">Selecione um marco histórico para entender como a crise do software nos anos 1960 deu origem a uma das profissões mais estratégicas do século XXI.</p>
+      </div>
+
+      <div class="history-layout">
+        <div class="timeline-controls">
+          <button type="button" class="timeline-btn active" data-era="1968">
+            <span>Conferência da OTAN</span>
+            <span class="timeline-year">1968</span>
+          </button>
+          <button type="button" class="timeline-btn" data-era="1969">
+            <span>Margaret Hamilton &amp; Apollo 11</span>
+            <span class="timeline-year">1969</span>
+          </button>
+          <button type="button" class="timeline-btn" data-era="2001">
+            <span>Manifesto Ágil</span>
+            <span class="timeline-year">2001</span>
+          </button>
+          <button type="button" class="timeline-btn" data-era="2026">
+            <span>Nuvem, Mobile &amp; IA Generativa</span>
+            <span class="timeline-year">Atualidade</span>
+          </button>
+        </div>
+
+        <article class="history-display">
+          <img
+            src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 180'%3E%3Crect width='600' height='180' rx='12' fill='%230f172a'/%3E%3Cline x1='60' y1='90' x2='540' y2='90' stroke='%23334155' stroke-width='4'/%3E%3Ccircle cx='100' cy='90' r='16' fill='%2306b6d4'/%3E%3Ctext x='100' y='132' fill='%23f8fafc' font-family='sans-serif' font-size='14' font-weight='bold' text-anchor='middle'%3E1968%3C/text%3E%3Ccircle cx='235' cy='90' r='16' fill='%236366f1'/%3E%3Ctext x='235' y='132' fill='%23f8fafc' font-family='sans-serif' font-size='14' font-weight='bold' text-anchor='middle'%3E1969%3C/text%3E%3Ccircle cx='370' cy='90' r='16' fill='%2310b981'/%3E%3Ctext x='370' y='132' fill='%23f8fafc' font-family='sans-serif' font-size='14' font-weight='bold' text-anchor='middle'%3E2001%3C/text%3E%3Ccircle cx='500' cy='90' r='16' fill='%23f59e0b'/%3E%3Ctext x='500' y='132' fill='%23f8fafc' font-family='sans-serif' font-size='14' font-weight='bold' text-anchor='middle'%3EHoje%3C/text%3E%3C/svg%3E"
+            alt="Linha do tempo ilustrada da Engenharia de Software destacando 1968, 1969, 2001 e a atualidade"
+            loading="lazy">
+          <span class="badge" id="eraBadge">1968 • Origem Oficial</span>
+          <h3 id="eraTitle">A Crise do Software e a Conferência da OTAN</h3>
+          <p id="eraText">
+            No final da década de 1960, o hardware evoluía rapidamente, mas os programas atrasavam, estouravam orçamentos e apresentavam falhas críticas. Em 1968, na Alemanha, a Conferência da OTAN cunhou oficialmente o termo "Engenharia de Software", propondo métodos rigorosos de engenharia para construir programas confiáveis.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. PANORAMA ATUAL E MERCADO (INTEGRAÇÃO COM MATEMÁTICA E GEOGRAFIA) -->
+    <section id="mercado">
+      <div class="section-header">
+        <span class="badge">Integração com Matemática &amp; Atualidades</span>
+        <h2>Panorama Atual, Salários e Empregabilidade</h2>
+        <p class="subtitle">Alterne entre os níveis de carreira nos botões abaixo para visualizar a evolução salarial média no Brasil e os indicadores do setor.</p>
+      </div>
+
+      <div class="market-dashboard">
+        <div class="tab-bar">
+          <button type="button" class="tab-btn active" data-level="junior">Nível Júnior</button>
+          <button type="button" class="tab-btn" data-level="pleno">Nível Pleno</button>
+          <button type="button" class="tab-btn" data-level="senior">Nível Sênior</button>
+          <button type="button" class="tab-btn" data-level="global">Carreira Internacional (Remoto)</button>
+        </div>
+
+        <div class="stat-highlight-grid">
+          <div class="stat-box">
+            <div class="stat-label">Média Salarial Mensal</div>
+            <div class="stat-value" id="salaryValue">R$ 4.800</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Taxa de Empregabilidade</div>
+            <div class="stat-value" id="employabilityValue">91%</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Modalidade Remota / Híbrida</div>
+            <div class="stat-value" id="remoteValue">78%</div>
+          </div>
+        </div>
+
+        <div class="chart-group">
+          <div class="bar-item">
+            <label for="barSalary">
+              <span>Índice de Remuneração Relativa</span>
+              <span id="barSalaryPct">35%</span>
+            </label>
+            <div class="bar-track" id="barSalary">
+              <div class="bar-fill" id="barSalaryFill" style="width: 35%;"></div>
+            </div>
+          </div>
+
+          <div class="bar-item">
+            <label for="barDemand">
+              <span>Demanda de Vagas no Mercado</span>
+              <span id="barDemandPct">82%</span>
+            </label>
+            <div class="bar-track" id="barDemand">
+              <div class="bar-fill" id="barDemandFill" style="width: 82%;"></div>
+            </div>
+          </div>
+
+          <div class="bar-item">
+            <label for="barAutonomy">
+              <span>Autonomia Técnica e Liderança</span>
+              <span id="barAutonomyPct">40%</span>
+            </label>
+            <div class="bar-track" id="barAutonomy">
+              <div class="bar-fill" id="barAutonomyFill" style="width: 40%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <h3>🎓 Formação Acadêmica</h3>
+          <p>Bacharelado em Engenharia de Software (4 anos), Ciência da Computação ou Análise e Desenvolvimento de Sistemas (Tecnólogo), aliados a certificações em nuvem e portfólio prático.</p>
+        </article>
+        <article class="card">
+          <h3>🏢 Principais Setores Contratantes</h3>
+          <p>Bancos e Fintechs, Big Techs, E-commerce, HealthTechs (saúde), AgroTechs, Indústria 4.0, Startups e órgãos públicos de tecnologia.</p>
+        </article>
+        <article class="card">
+          <h3>🚀 Perspectivas Futuras</h3>
+          <p>Crescimento contínuo impulsionado pela inteligência artificial aplicada, cibersegurança, computação em nuvem, Internet das Coisas (IoT) e automação industrial.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 4. RODAPÉ / CRÉDITOS -->
+  <footer id="creditos">
+    <div class="footer-container">
+      <div>
+        <h3>Portfólio Oficial • Feira de Profissões</h3>
+        <p><strong>Aluno:</strong> Victor Gabriel</p>
+        <p><strong>Turma:</strong> 2º Ano C • <strong>Nº:</strong> 23</p>
+        <p><strong>Tema Sorteado:</strong> Engenharia de Software</p>
+      </div>
+
+      <div>
+        <h3>Integração Interdisciplinar</h3>
+        <p><strong>Disciplinas:</strong> Tecnologia / Programação Web, História (Evolução Tecnológica), Matemática (Estatística Salarial) e Língua Portuguesa (Comunicação Técnica).</p>
+      </div>
+
+      <div>
+        <h3>Acesso Rápido ao Projeto</h3>
+        <div class="footer-links">
+          <a href="#home" class="btn btn-outline">↑ Topo da Página</a>
+          <button type="button" class="btn btn-primary" id="openSourcesBtn">📚 Fontes da Pesquisa</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL INTERATIVO (QUIZ E FONTES) -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <h3 id="modalTitle">Título do Modal</h3>
+      <div id="modalBody" style="margin-top: 1rem;"></div>
+      <div style="margin-top: 1.5rem; text-align: right;">
+        <button type="button" class="btn btn-primary" id="closeModalBtn">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 1. Alternância de Tema (Claro / Escuro)
+    const themeBtn = document.getElementById('themeBtn');
+    const htmlEl = document.documentElement;
+
+    themeBtn.addEventListener('click', () => {
+      const isDark = htmlEl.getAttribute('data-theme') === 'dark';
+      const nextTheme = isDark ? 'light' : 'dark';
+      htmlEl.setAttribute('data-theme', nextTheme);
+      themeBtn.textContent = nextTheme === 'dark' ? '☀️ Tema' : '🌙 Tema';
+    });
+
+    // 2. Menu Responsivo Mobile
+    const menuBtn = document.getElementById('menuBtn');
+    const mainNav = document.getElementById('mainNav');
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mainNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // 3. Destaque Dinâmico no Menu durante Rolagem
+    const sections = document.querySelectorAll('section, footer');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = 'home';
+      sections.forEach(sec => {
+        const top = window.scrollY;
+        const offset = sec.offsetTop - 160;
+        if (top >= offset) {
+          current = sec.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // 4. Abas Interativas de Especialidades
+    const rolesData = {
+      frontend: {
+        title: 'Engenharia Front-End & Experiência do Usuário',
+        desc: 'Responsável por construir toda a interface visual e interativa com a qual o usuário interage diretamente no navegador ou celular, garantindo acessibilidade, velocidade e responsividade.',
+        tags: ['HTML5 & CSS3', 'JavaScript / TypeScript', 'React & Next.js', 'Acessibilidade Web']
+      },
+      backend: {
+        title: 'Engenharia Back-End & Arquitetura de APIs',
+        desc: 'Desenvolve a lógica de negócio nos servidores, gerencia bancos de dados, autenticação de usuários, integração de pagamentos e segurança contra ataques cibernéticos.',
+        tags: ['Node.js & Python', 'Java / C#', 'SQL & NoSQL', 'APIs REST & GraphQL']
+      },
+      devops: {
+        title: 'DevOps, Infraestrutura & Computação em Nuvem',
+        desc: 'Automatiza testes e publicações de software (CI/CD), gerencia servidores em nuvem e garante que aplicativos suportem milhões de acessos simultâneos sem sair do ar.',
+        tags: ['AWS / Azure / GCP', 'Docker & Kubernetes', 'Linux', 'Automação CI/CD']
+      },
+      ia: {
+        title: 'Engenharia de Inteligência Artificial & Dados',
+        desc: 'Integra modelos de aprendizado de máquina, processamento de linguagem natural e análise de grandes volumes de dados em produtos digitais inteligentes.',
+        tags: ['Python & PyTorch', 'Engenharia de Prompts', 'Machine Learning', 'Big Data']
+      }
+    };
+
+    document.querySelectorAll('[data-role]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-role]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const info = rolesData[btn.dataset.role];
+        document.getElementById('roleTitle').textContent = info.title;
+        document.getElementById('roleDesc').textContent = info.desc;
+        document.getElementById('roleTags').innerHTML = info.tags
+          .map(tag => `<span class="pill">${tag}</span>`)
+          .join('');
+      });
+    });
+
+    // 5. Linha do Tempo Interativa (Fatos Históricos)
+    const erasData = {
+      '1968': {
+        badge: '1968 • Origem Oficial',
+        title: 'A Crise do Software e a Conferência da OTAN',
+        text: 'No final da década de 1960, o hardware evoluía rapidamente, mas os programas atrasavam, estouravam orçamentos e apresentavam falhas críticas. Em 1968, na Alemanha, a Conferência da OTAN cunhou oficialmente o termo "Engenharia de Software", propondo métodos rigorosos de engenharia para construir programas confiáveis.'
+      },
+      '1969': {
+        badge: '1969 • Conquista Espacial',
+        title: 'Margaret Hamilton e o Programa Apollo 11',
+        text: 'Diretora de Engenharia de Software do MIT, Margaret Hamilton liderou a equipe que escreveu o código de voo da missão Apollo 11. O sistema priorizou tarefas críticas em tempo real durante o pouso na Lua, evitando o aborto da missão e consolidando a profissão mundialmente.'
+      },
+      '2001': {
+        badge: '2001 • Revolução nos Métodos',
+        title: 'O Manifesto Ágil e Entregas Contínuas',
+        text: 'Em 2001, dezessete especialistas publicaram o Manifesto para Desenvolvimento Ágil de Software. Frameworks como Scrum e Kanban substituíram processos rígidos por entregas rápidas, colaboração constante com o cliente e adaptação às mudanças.'
+      },
+      '2026': {
+        badge: 'Atualidade • Era Conectada',
+        title: 'Computação em Nuvem, Smartphones e IA',
+        text: 'Hoje, engenheiros de software projetam sistemas distribuídos globalmente em nuvem, aplicativos móveis e soluções assistidas por Inteligência Artificial, impactando medicina, finanças, educação e sustentabilidade em escala planetária.'
+      }
+    };
+
+    document.querySelectorAll('[data-era]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-era]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const era = erasData[btn.dataset.era];
+        document.getElementById('eraBadge').textContent = era.badge;
+        document.getElementById('eraTitle').textContent = era.title;
+        document.getElementById('eraText').textContent = era.text;
+      });
+    });
+
+    // 6. Simulador Interativo de Mercado e Salários
+    const marketData = {
+      junior: {
+        salary: 'R$ 4.800',
+        employability: '91%',
+        remote: '78%',
+        salaryPct: 35,
+        demandPct: 82,
+        autonomyPct: 40
+      },
+      pleno: {
+        salary: 'R$ 9.200',
+        employability: '95%',
+        remote: '85%',
+        salaryPct: 62,
+        demandPct: 92,
+        autonomyPct: 70
+      },
+      senior: {
+        salary: 'R$ 16.500',
+        employability: '98%',
+        remote: '90%',
+        salaryPct: 85,
+        demandPct: 96,
+        autonomyPct: 95
+      },
+      global: {
+        salary: 'US$ 5.200 (~R$ 28 mil)',
+        employability: '94%',
+        remote: '100%',
+        salaryPct: 100,
+        demandPct: 88,
+        autonomyPct: 95
+      }
+    };
+
+    document.querySelectorAll('[data-level]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-level]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const data = marketData[btn.dataset.level];
+        document.getElementById('salaryValue').textContent = data.salary;
+        document.getElementById('employabilityValue').textContent = data.employability;
+        document.getElementById('remoteValue').textContent = data.remote;
+
+        document.getElementById('barSalaryPct').textContent = data.salaryPct + '%';
+        document.getElementById('barSalaryFill').style.width = data.salaryPct + '%';
+
+        document.getElementById('barDemandPct').textContent = data.demandPct + '%';
+        document.getElementById('barDemandFill').style.width = data.demandPct + '%';
+
+        document.getElementById('barAutonomyPct').textContent = data.autonomyPct + '%';
+        document.getElementById('barAutonomyFill').style.width = data.autonomyPct + '%';
+      });
+    });
+
+    // 7. Modal Interativo (Quiz Vocacional e Fontes)
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+
+    function openModal(title, htmlContent) {
+      modalTitle.textContent = title;
+      modalBody.innerHTML = htmlContent;
+      modalBackdrop.classList.add('open');
+    }
+
+    document.getElementById('closeModalBtn').addEventListener('click', () => {
+      modalBackdrop.classList.remove('open');
+    });
+
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) {
+        modalBackdrop.classList.remove('open');
+      }
+    });
+
+    document.getElementById('openQuizBtn').addEventListener('click', () => {
+      openModal(
+        '🎯 Você tem perfil para Engenharia de Software?',
+        `<p>Qual atividade mais chama sua atenção em um projeto escolar ou pessoal?</p>
+         <button type="button" class="quiz-option" onclick="showQuizResult('Você tem forte afinidade com Arquitetura e Back-End! Gosta de lógica, resolução de problemas e estruturação de sistemas.')">🧩 Resolver quebra-cabeças lógicos e organizar sistemas</button>
+         <button type="button" class="quiz-option" onclick="showQuizResult('Você tem perfil ideal para Front-End e UX! Combina criatividade visual com tecnologia para encantar usuários.')">🎨 Criar interfaces visuais modernas e interativas</button>
+         <button type="button" class="quiz-option" onclick="showQuizResult('Você tem perfil de Tech Lead / Gestão Ágil! Saber conectar pessoas e tecnologia é um diferencial enorme na área.')">🤝 Liderar equipes e planejar soluções em grupo</button>`
+      );
+    });
+
+    window.showQuizResult = function(message) {
+      modalBody.innerHTML = `<p style="color: var(--accent); font-weight: 700;">Resultado da Análise:</p><p style="margin-top: 0.5rem;">${message}</p>`;
+    };
+
+    document.getElementById('openSourcesBtn').addEventListener('click', () => {
+      openModal(
+        '📚 Referências e Base de Pesquisa',
+        `<ul style="padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem;">
+          <li><strong>Sommerville, Ian:</strong> Engenharia de Software (10ª Edição) — Fundamentos e processos.</li>
+          <li><strong>SBC (Sociedade Brasileira de Computação):</strong> Diretrizes curriculares e panorama da área de TI no Brasil.</li>
+          <li><strong>Brasscom:</strong> Relatório Setorial de Tecnologia da Informação e Comunicação e projeções de empregabilidade.</li>
+          <li><strong>NASA / MIT Archives:</strong> Documentação histórica sobre Margaret Hamilton e o software do Projeto Apollo.</li>
+        </ul>`
+      );
+    });
+  </script>
+</body>
+</html>
